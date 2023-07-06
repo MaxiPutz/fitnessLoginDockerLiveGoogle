@@ -1,0 +1,16 @@
+version: '3'
+services:
+  db:
+    build: ./db
+    environment:
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - 5432:5432
+  app:
+    build: ./java
+    ports:
+      - 8080:8080
+    network_mode: "host"
+    depends_on:
+      - db
+ 
